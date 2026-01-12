@@ -1,6 +1,7 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import ProfileScreen from '../screens/profile/ProfileScreen';
+import SettingsScreen from '../screens/profile/SettingsScreen';
 import { colors } from '../theme';
 
 const Stack = createStackNavigator();
@@ -18,6 +19,11 @@ export default function ProfileStack() {
         name="Profile"
         component={ProfileScreen}
         options={{ title: 'Profile' }}
+      />
+      <Stack.Screen
+        name="Settings"
+        component={SettingsScreen}
+        options={{ title: 'Settings' }}
       />
     </Stack.Navigator>
   );
