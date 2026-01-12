@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, ActivityIndicator } from 'react-native';
-import { Sprout, CalendarDays, TrendingUp, Plus } from 'lucide-react-native';
+import { Sprout, CalendarDays, TrendingUp, Plus, Droplets } from 'lucide-react-native';
 import { colors, typography, spacing } from '../../theme';
 import useFarmStore from '../../store/useFarmStore';
 
@@ -31,6 +31,14 @@ export default function FarmDashboardScreen({ navigation }) {
       icon: Sprout,
       color: colors.healthy,
       screen: 'Harvest',
+    },
+    {
+      id: 'irrigation',
+      title: 'Irrigation Management',
+      subtitle: 'Manage water schedules',
+      icon: Droplets,
+      color: colors.accent,
+      screen: 'Irrigation',
     },
   ];
 
