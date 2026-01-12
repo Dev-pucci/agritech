@@ -1,6 +1,8 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import FarmDashboardScreen from '../screens/farm/FarmDashboardScreen';
+import PlantingScreen from '../screens/farm/PlantingScreen';
+import HarvestScreen from '../screens/farm/HarvestScreen';
 import { colors } from '../theme';
 
 const Stack = createStackNavigator();
@@ -18,6 +20,16 @@ export default function FarmStack() {
         name="FarmDashboard"
         component={FarmDashboardScreen}
         options={{ title: 'My Farm' }}
+      />
+      <Stack.Screen
+        name="Planting"
+        component={PlantingScreen}
+        options={{ title: 'Planting Schedule' }}
+      />
+      <Stack.Screen
+        name="Harvest"
+        component={HarvestScreen}
+        options={{ title: 'Harvest Tracking' }}
       />
     </Stack.Navigator>
   );
