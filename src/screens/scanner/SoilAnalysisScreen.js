@@ -6,7 +6,7 @@ import ResultCard from '../../components/ResultCard';
 import useImageStore from '../../store/useImageStore';
 import { analyzeSoil } from '../../services/api/soilAnalysis';
 
-export default function SoilAnalysisScreen() {
+export default function SoilAnalysisScreen({ navigation }) {
   const {
     selectedImage,
     result,
@@ -76,6 +76,16 @@ export default function SoilAnalysisScreen() {
     return (
       <View style={styles.container}>
         <ResultCard result={result} type="soil" />
+
+        {result.fertilizerNeeded && (
+          <TouchableOpacity
+            style={styles.fertilizerButton}
+            onPress={() => navigation.navigate('Fertilizer', { soilData: result })}
+          >
+            <Text style={styles.fertilizerButtonText}>View Fertilizer Recommendations</Text>
+          </TouchableOpacity>
+        )}
+
         <TouchableOpacity style={styles.newAnalysisButton} onPress={resetAnalysis}>
           <Text style={styles.newAnalysisButtonText}>New Analysis</Text>
         </TouchableOpacity>
@@ -142,9 +152,28 @@ const styles = StyleSheet.create({
     color: colors.text,
     fontWeight: '600',
   },
+  fertilizerButton: {
+    backgroundColor: colors.accent,
+    margin: spacing.md,
+    marginBottom: spacing.sm,
+    paddingVertical: spacing.md,
+    borderRadius: 8,
+    alignItems: 'center',
+    elevation: 3,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
+  },
+  fertilizerButtonText: {
+    ...typography.body,
+    color: '#fff',
+    fontWeight: 'bold',
+  },
   newAnalysisButton: {
     backgroundColor: colors.primary,
     margin: spacing.md,
+    marginTop: 0,
     paddingVertical: spacing.md,
     borderRadius: 8,
     alignItems: 'center',
